@@ -1,24 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import { Outlet } from "react-router-dom";
+import "./App.css";
+import Navbar from "./components/Navbar";
+import { useState } from "react";
+
+// 04e4e1e56ab1474f9595bcfaf4c6d783
 
 function App() {
+  const [query, setQuery] = useState('');
+  const getQuery = (q) => {
+    setQuery(q);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <Navbar getQuery={getQuery}/>
+    <Outlet/>
+    </>
   );
 }
 
